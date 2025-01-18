@@ -1,0 +1,23 @@
+{
+  "name": "com.k.levelservice",
+  "displayName": "k.LevelService",
+  "version": "0.0.1",
+  "unity": "6000.0",
+  "author": {
+    "name": "k0fe"
+  },
+  "hideInEditor": false,
+  "description": "Load unload them levels",
+  "keywords": [
+    "Level",
+    "Load",
+    "Unload"
+  ],
+  "git-dependencies": {
+  	"com.k.services": "https://github.com/xk0fe/k.services.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xk0fe/k.levelservice"
+  }
+}
