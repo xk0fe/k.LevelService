@@ -1,8 +1,7 @@
-﻿using k.LevelService.Common.Implementations;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace k.LevelService.Common
+namespace k.LevelService.Common.Implementations
 {
     [CreateAssetMenu(menuName = "k/Services/Levels/Implementations/" + nameof(SceneAssetLevel), fileName = nameof(SceneAssetLevel), order = 0)]
     public class SceneAssetLevel : BaseScriptableLevel
