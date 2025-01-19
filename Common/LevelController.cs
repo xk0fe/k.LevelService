@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using k.LevelService.Interfaces;
+using k.LevelService.Common.Interfaces;
 
-namespace k.LevelService
+namespace k.LevelService.Common
 {
     public class LevelController
     {

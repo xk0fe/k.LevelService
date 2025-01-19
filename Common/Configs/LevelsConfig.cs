@@ -1,7 +1,7 @@
-﻿using k.LevelService.Implementations;
+﻿using k.LevelService.Common.Implementations;
 using UnityEngine;
 
-namespace k.LevelService.Configs
+namespace k.LevelService.Common.Configs
 {
     [CreateAssetMenu(menuName = "k/Services/Levels/" + nameof(LevelsConfig), fileName = nameof(LevelsConfig), order = 0)]
     public class LevelsConfig : ScriptableObject

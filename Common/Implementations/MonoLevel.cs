@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace k.LevelService.Implementations
+namespace k.LevelService.Common.Implementations
 {
     [CreateAssetMenu(menuName = "k/Services/Levels/Implementations/" + nameof(MonoLevel), fileName = nameof(MonoLevel), order = 0)]
     public class MonoLevel : BaseScriptableLevel

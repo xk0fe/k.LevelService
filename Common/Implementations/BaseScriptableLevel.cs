@@ -1,7 +1,7 @@
-﻿using k.LevelService.Interfaces;
+﻿using k.LevelService.Common.Interfaces;
 using UnityEngine;
 
-namespace k.LevelService.Implementations
+namespace k.LevelService.Common.Implementations
 {
     public class BaseScriptableLevel : ScriptableObject, ILevel
     {

@@ -1,7 +1,7 @@
 {
   "name": "com.k.levelservice",
   "displayName": "k.LevelService",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "unity": "6000.0",
   "author": {
     "name": "k0fe"

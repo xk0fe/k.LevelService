@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using k.LevelService.Interfaces;
+using k.LevelService.Common.Interfaces;
 using UnityEngine;
 
-namespace k.LevelService
+namespace k.LevelService.Common
 {
     public class LevelIndexStorage
     {
@@ -26,6 +26,23 @@ namespace k.LevelService
             level = null;
             _levelsByIndex.TryGetValue(index, out level);
             return level != null;
+        }
+        
+        /// <summary>
+        /// Slow method, prefer to use TryGetLevelByIndex
+        /// </summary>
+        public bool TryGetIndexByLevel(ILevel level, out int index)
+        {
+            index = -1;
+            foreach (var kvp in _levelsByIndex)
+            {
+                if (kvp.Value == level)
+                {
+                    index = kvp.Key;
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool ContainsLevelIndex(int index)

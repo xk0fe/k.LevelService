@@ -1,8 +1,9 @@
-using k.LevelService.Configs;
+using k.LevelService.Common.Configs;
+using k.LevelService.Common.Interfaces;
 using k.Services;
 using UnityEngine;
 
-namespace k.LevelService
+namespace k.LevelService.Common
 {
     [CreateAssetMenu(menuName = "k/Services/Levels/" + nameof(LevelService), fileName = nameof(LevelService), order = 0)]
     public class LevelService : GenericScriptableService<LevelService>
@@ -16,6 +17,9 @@ namespace k.LevelService
         private int _totalLevelLength = DEFAULT_LEVEL_INDEX;
         private const int DEFAULT_LEVEL_INDEX = -1;
     
+        public int ActiveLevelIndex => _activeLevelIndex;
+        public int TotalLevelLength => _totalLevelLength;
+        
         public override void Initialize()
         {
             base.Initialize();
@@ -50,6 +54,14 @@ namespace k.LevelService
             _activeLevelIndex = index;
             return true;
         }
+
+        public bool LoadLevel(ILevel level)
+        {
+            if (!_levelController.LoadLevel(level)) return false;
+            if (!_levelIndexStorage.TryGetIndexByLevel(level, out var index)) return false;
+            _activeLevelIndex = index;
+            return true;
+        }
         
         public void NextLevel()
         {
@@ -57,12 +69,15 @@ namespace k.LevelService
             if (_levelsConfig.RepeatLevels) nextLevelIndex %= _totalLevelLength; 
             LoadLevel(nextLevelIndex);
         }
-        
-        public bool UnloadLevel(int index)
+
+        /// <summary>
+        /// Ensure to call this method before unloading the level. Otherwise, set changeActiveIndex to false.
+        /// </summary>
+        public bool UnloadLevel(int index, bool changeActiveIndex = true)
         {
             if (!_levelIndexStorage.TryGetLevelByIndex(index, out var level)) return false;
             if (!_levelController.UnloadLevel(level)) return false;
-            _activeLevelIndex = DEFAULT_LEVEL_INDEX;
+            if (changeActiveIndex) _activeLevelIndex = DEFAULT_LEVEL_INDEX;
             return true;
         }
 

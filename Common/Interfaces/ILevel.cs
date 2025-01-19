@@ -1,4 +1,4 @@
-﻿namespace k.LevelService.Interfaces
+﻿namespace k.LevelService.Common.Interfaces
 {
     public interface ILevel
     {
