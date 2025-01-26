@@ -1,4 +1,6 @@
 {
-	"name": "k.LevelService.Editor",
-	"references":[ "GUID:f52318e13d0c68d40806245e9611c900" ]
+  "name": "k.LevelService.Editor",
+  "references": [
+    "GUID:f52318e13d0c68d40806245e9611c900"
+  ]
 }

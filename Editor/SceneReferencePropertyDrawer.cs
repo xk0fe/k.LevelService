@@ -3,16 +3,13 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
-namespace k.LevelService.Editor
-{
+namespace k.LevelService.Editor {
     [CustomPropertyDrawer(typeof(SceneReference))]
-    public class SceneReferencePropertyDrawer : PropertyDrawer
-    {
+    public class SceneReferencePropertyDrawer : PropertyDrawer {
         private const string SCENE_ASSET_PROPERTY = "_sceneAsset";
         private const string SCENE_NAME_PROPERTY = "_sceneName";
 
-        public override VisualElement CreatePropertyGUI(SerializedProperty property)
-        {
+        public override VisualElement CreatePropertyGUI(SerializedProperty property) {
             var root = new VisualElement();
 
             var sceneAssetProperty = property.FindPropertyRelative(SCENE_ASSET_PROPERTY);
@@ -32,17 +29,14 @@ namespace k.LevelService.Editor
                     : "This scene is not in your build settings.",
                 isSceneActive
                     ? HelpBoxMessageType.None
-                    : HelpBoxMessageType.Error)
-            {
+                    : HelpBoxMessageType.Error) {
                 name = "scene-warning-box",
                 visible = hasScene
             };
             root.Add(warningBox);
-            if (hasScene && !isSceneActive)
-            {
+            if (hasScene && !isSceneActive) {
                 var addButton = new Button(() =>
-                    AddSceneToBuildSettings(sceneAssetProperty.objectReferenceValue as SceneAsset))
-                {
+                    AddSceneToBuildSettings(sceneAssetProperty.objectReferenceValue as SceneAsset)) {
                     text = "Add scene to build settings",
                     name = "add-scene-button"
                 };
@@ -52,8 +46,7 @@ namespace k.LevelService.Editor
             return root;
         }
 
-        private void AddSceneToBuildSettings(SceneAsset scene)
-        {
+        private void AddSceneToBuildSettings(SceneAsset scene) {
             if (scene == null) return;
             var scenePath = AssetDatabase.GetAssetPath(scene);
             var scenes = EditorBuildSettings.scenes;
@@ -62,14 +55,11 @@ namespace k.LevelService.Editor
             EditorBuildSettings.scenes = scenes;
         }
 
-        private bool SceneExistsInBuildSettings(string sceneName, out int buildIndex)
-        {
+        private bool SceneExistsInBuildSettings(string sceneName, out int buildIndex) {
             var scenes = EditorBuildSettings.scenes;
-            for (var i = 0; i < scenes.Length; i++)
-            {
+            for (var i = 0; i < scenes.Length; i++) {
                 var scene = scenes[i];
-                if (scene.path.Contains(sceneName))
-                {
+                if (scene.path.Contains(sceneName)) {
                     buildIndex = i;
                     return true;
                 }

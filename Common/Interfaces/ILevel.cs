@@ -1,7 +1,5 @@
-﻿namespace k.LevelService.Common.Interfaces
-{
-    public interface ILevel
-    {
+﻿namespace k.LevelService.Common.Interfaces {
+    public interface ILevel {
         void Load();
         void Unload();
     }

@@ -1,7 +1,7 @@
 {
   "name": "com.k.levelservice",
   "displayName": "k.LevelService",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "unity": "6000.0",
   "author": {
     "name": "k0fe"
@@ -14,7 +14,7 @@
     "Unload"
   ],
   "git-dependencies": {
-  	"com.k.services": "https://github.com/xk0fe/k.services.git"
+    "com.k.services": "https://github.com/xk0fe/k.services.git"
   },
   "repository": {
     "type": "git",
