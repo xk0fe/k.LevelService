@@ -24,6 +24,7 @@ namespace k.LevelService.Common.Implementations {
         }
 
         public override void Unload() {
+            if (SceneManager.sceneCount <= 1) return;
             SceneManager.UnloadSceneAsync(_sceneIndex);
         }
     }
