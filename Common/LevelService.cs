@@ -1,3 +1,4 @@
+using System;
 using k.LevelService.Common.Configs;
 using k.LevelService.Common.Interfaces;
 using k.Services;
@@ -18,11 +19,17 @@ namespace k.LevelService.Common {
 
         public int ActiveLevelIndex => _activeLevelIndex;
         public int TotalLevelLength => _totalLevelLength;
+        
+        public Action<ILevel> OnLevelLoaded;
+        public Action<ILevel> OnLevelUnloaded;
 
         public override void Initialize() {
             base.Initialize();
             _levelController = new LevelController();
             _levelIndexStorage = new LevelIndexStorage();
+
+            _levelController.OnLevelLoaded += level => OnLevelLoaded?.Invoke(level);
+            _levelController.OnLevelUnloaded += level => OnLevelUnloaded?.Invoke(level);
 
             if (_levelsConfig == null) {
                 Debug.LogWarning($"{nameof(_levelsConfig)} is not set in {nameof(LevelService)}!", this);

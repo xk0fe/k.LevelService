@@ -7,8 +7,8 @@ namespace k.LevelService.Common {
         private readonly List<ILevel> _registeredLevels = new();
         private ILevel _activeLevel;
 
-        private Action<ILevel> OnLevelLoaded;
-        private Action<ILevel> OnLevelUnloaded;
+        public Action<ILevel> OnLevelLoaded;
+        public Action<ILevel> OnLevelUnloaded;
 
         public void RegisterLevel(ILevel level) {
             if (_registeredLevels.Contains(level)) return;
